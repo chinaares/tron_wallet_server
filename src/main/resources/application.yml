@@ -1,0 +1,14 @@
+server:
+  port: 2367
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /
+wallet:
+  isHotWallet: false
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      enabled: false
