@@ -127,7 +127,8 @@ void testTransferTrc10() {
     我参考和借鉴了很多,解决了我写这个的很多问题
    * [jasonthinks/tron-sdk](https://github.com/jasonthinks/tron-sdk)
    
-* https://github.com/tronprotocol/wallet-cli
+* wallet-cli
+
     弄这个真的是要气死人啊，首先我对gradle不是很熟悉，其次我始终没有搞明白为什么他会集成了 spring-cloud-sonsul,还好的是最后也算参考完成了我的代码编写
    * [tronprotocol/wallet-cli](https://github.com/tronprotocol/wallet-cli)
     
