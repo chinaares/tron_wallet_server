@@ -32,8 +32,6 @@ class TronControllerTest {
                 .to(to)
                 .amount(100L)
                 .currency("TRX")
-                .id("test_0001")
-                .precision(5)
                 .memo("test_add_0001")
                 .build();
         BaseResult<CreateTxView> createTxViewBaseResult = tronController.create(param);
@@ -69,8 +67,6 @@ class TronControllerTest {
                 .to(to)
                 .amount(100L)
                 .currency("USDT")
-                .id("test_0001")
-                .precision(5)
                 .memo("test_add_0001")
                 .tokenAddress(tokenAddress)
                 .build();
@@ -100,8 +96,6 @@ class TronControllerTest {
                 .to(to)
                 .amount(100L)
                 .currency("AAMT")
-                .id("test_0001")
-                .precision(5)
                 .memo("test_add_0001")
                 .assetName("31303034303731")
                 .build();
@@ -129,8 +123,6 @@ class TronControllerTest {
                 .to(to)
                 .amount(100L)
                 .currency("USDT")
-                .id("test_0001")
-                .precision(5)
                 .memo("test_add_0001")
                 .tokenAddress(tokenAddress)
                 .build();

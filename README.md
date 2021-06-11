@@ -9,6 +9,7 @@
 
 ## 如何使用
 git clone https://github.com/yanwankun/tron_wallet_server.git
+* [接口文档](https://github.com/yanwankun/tron_wallet_server/blob/master/USE.md)
 
 ## 安装需要的依赖
 ```text
@@ -34,8 +35,6 @@ void testTransferTrx() {
             .to(to)
             .amount(100L)
             .currency("TRX")
-            .id("test_0001")
-            .precision(5)
             .memo("test_add_0001")
             .build();
     BaseResult<CreateTxView> createTxViewBaseResult = tronController.create(param);
@@ -65,8 +64,6 @@ void testTransferTrc20() {
             .to(to)
             .amount(100L)
             .currency("USDT")
-            .id("test_0001")
-            .precision(5)
             .memo("test_add_0001")
             .tokenAddress(tokenAddress)
             .build();
@@ -99,8 +96,6 @@ void testTransferTrc10() {
             .to(to)
             .amount(100L)
             .currency("AAMT")
-            .id("test_0001")
-            .precision(5)
             .memo("test_add_0001")
             .assetName("31303034303731")
             .build();

@@ -10,13 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class CreateTransactionParam {
-    private String id;
     private String from;
     private String to;
     private Long amount;
     private String currency;
     private String tokenAddress;
-    private Integer precision;
     private String assetName;
     private String memo;
 }
