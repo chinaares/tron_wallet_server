@@ -7,8 +7,10 @@ import com.yan.wallet.chain.config.TronConfig;
 import com.yan.wallet.chain.tron.bean.Trc10TransferParam;
 import com.yan.wallet.chain.tron.bean.Trc20TransferParam;
 import com.yan.wallet.chain.tron.bean.TrxTransferParam;
+import com.yan.wallet.chain.utils.NumUtils;
 import com.yan.wallet.chain.utils.StringByteUtils;
 import com.yan.wallet.chain.utils.YanObjectUtils;
+import com.yan.wallet.chain.utils.YanStrUtils;
 import com.yan.wallet.chain.web.view.BaseResult;
 import com.yan.wallet.chain.web.view.CreateTxView;
 import com.yan.wallet.chain.web.view.TrxKeyView;
@@ -29,6 +31,7 @@ import org.tron.protos.contract.SmartContractOuterClass;
 import org.tron.walletserver.GrpcClient;
 import org.tron.walletserver.WalletApi;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 @Slf4j
@@ -108,7 +111,8 @@ public class TronUtils implements InitializingBean {
         byte[] shieldedTRC20 = decode58Check(param.getToAddress());
         System.arraycopy(shieldedTRC20, 0,
                 shieldedContractAddressPadding, 11, 21);
-        byte[] valueBytes = longTo32Bytes(param.getAmount());
+//        byte[] valueBytes = longTo32Bytes(param.getAmount());
+        byte[] valueBytes = bigInterTo32Byte(param.getAmount());
         String input = Hex.toHexString(ByteUtil.merge(shieldedContractAddressPadding, valueBytes));
         byte[] tokenAddress = decode58Check(param.getTokenAddress());
         return triggerContract(tokenAddress, "transfer(address,uint256)", input, true,
@@ -188,6 +192,15 @@ public class TronUtils implements InitializingBean {
         byte[] longBytes = ByteArray.fromLong(value);
         byte[] zeroBytes = new byte[24];
         return ByteUtil.merge(zeroBytes, longBytes);
+    }
+
+    public static byte[] bigInterTo32Byte(BigInteger value) {
+        String value1 = NumUtils.bigInterToHexString(value);
+        if (value1.startsWith("0x") || value1.startsWith("0X")) {
+            value1 = value1.substring(2);
+        }
+        value1 = YanStrUtils.lPend(value1, "0", 64);
+        return StringByteUtils.hexString2Bytes(value1);
     }
 
     private static byte[] getAddressFromAddress(String address) {

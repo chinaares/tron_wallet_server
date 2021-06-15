@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigInteger;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class CreateTransactionParam {
     private String from;
     private String to;
-    private Long amount;
+    private BigInteger amount;
     private String currency;
     private String tokenAddress;
     private String assetName;

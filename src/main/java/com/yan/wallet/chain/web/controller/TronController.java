@@ -46,7 +46,7 @@ public class TronController {
 
         if (YanObjectUtils.notEmpty(param.getAssetName())) {
             return tronUtils.createTrc10Transfer(Trc10TransferParam.builder()
-                    .amount(param.getAmount())
+                    .amount(param.getAmount().longValue())
                     .fromAddress(param.getFrom())
                     .toAddress(param.getTo())
                     .assetName(param.getAssetName())
@@ -55,7 +55,7 @@ public class TronController {
         }
 
         return tronUtils.createTrxTransfer(TrxTransferParam.builder()
-                .amount(param.getAmount())
+                .amount(param.getAmount().longValue())
                 .fromAddress(param.getFrom())
                 .toAddress(param.getTo())
                 .memo(param.getMemo())

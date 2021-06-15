@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigInteger;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class TronControllerTest {
@@ -30,7 +32,7 @@ class TronControllerTest {
         param = CreateTransactionParam.builder()
                 .from(from)
                 .to(to)
-                .amount(100L)
+                .amount(BigInteger.valueOf(100))
                 .currency("TRX")
                 .memo("test_add_0001")
                 .build();
@@ -65,7 +67,7 @@ class TronControllerTest {
         param = CreateTransactionParam.builder()
                 .from(from)
                 .to(to)
-                .amount(100L)
+                .amount(BigInteger.valueOf(100))
                 .currency("USDT")
                 .memo("test_add_0001")
                 .tokenAddress(tokenAddress)
@@ -94,7 +96,7 @@ class TronControllerTest {
         param = CreateTransactionParam.builder()
                 .from(from)
                 .to(to)
-                .amount(100L)
+                .amount(BigInteger.valueOf(100))
                 .currency("AAMT")
                 .memo("test_add_0001")
                 .assetName("31303034303731")
@@ -121,7 +123,7 @@ class TronControllerTest {
         param = CreateTransactionParam.builder()
                 .from(from)
                 .to(to)
-                .amount(100L)
+                .amount(BigInteger.valueOf(100))
                 .currency("USDT")
                 .memo("test_add_0001")
                 .tokenAddress(tokenAddress)
