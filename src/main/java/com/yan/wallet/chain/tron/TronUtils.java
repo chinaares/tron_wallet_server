@@ -165,7 +165,10 @@ public class TronUtils implements InitializingBean {
         try {
             boolean bool = WalletApi.broadcastTransaction(StringByteUtils.hexString2Bytes(signStr));
             if (bool) {
-                return result.makeSuccessResult();
+                Protocol.Transaction transaction = Protocol.Transaction.parseFrom(StringByteUtils.hexString2Bytes(signStr));
+                String txId = ByteArray.toHexString(Sha256Sm3Hash.hash(
+                        transaction.getRawData().toByteArray()));
+                return result.makeSuccessResult(txId);
             } else {
                 return result.makeFailedResult();
             }
