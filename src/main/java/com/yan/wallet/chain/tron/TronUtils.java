@@ -68,7 +68,7 @@ public class TronUtils implements InitializingBean {
     }
 
     public BaseResult<CreateTxView> createTrxTransfer(TrxTransferParam param) {
-        if (tronConfig.getIsHotWallet()) {
+        if (!tronConfig.getIsHotWallet()) {
             return new BaseResult<>().makeFailedResult("Not a hot wallet, can’t handle internet operations");
         }
         byte[] from = WalletApi.decodeFromBase58Check(param.getFromAddress());
@@ -104,7 +104,7 @@ public class TronUtils implements InitializingBean {
     }
 
     public BaseResult<CreateTxView> createTrc20Transfer(Trc20TransferParam param) {
-        if (tronConfig.getIsHotWallet()) {
+        if (!tronConfig.getIsHotWallet()) {
             return new BaseResult<>().makeFailedResult("Not a hot wallet, can’t handle internet operations");
         }
         byte[] shieldedContractAddressPadding = new byte[32];
@@ -120,7 +120,7 @@ public class TronUtils implements InitializingBean {
     }
 
     public BaseResult<CreateTxView> createTrc10Transfer(Trc10TransferParam param) {
-        if (tronConfig.getIsHotWallet()) {
+        if (!tronConfig.getIsHotWallet()) {
             return new BaseResult<>().makeFailedResult("Not a hot wallet, can’t handle internet operations");
         }
         Protocol.Transaction.Builder transactionBuilder = Protocol.Transaction.newBuilder();
@@ -159,7 +159,7 @@ public class TronUtils implements InitializingBean {
 
     public BaseResult broadCastTx(String signStr) {
         BaseResult result = new BaseResult();
-        if (tronConfig.getIsHotWallet()) {
+        if (!tronConfig.getIsHotWallet()) {
             return result.makeFailedResult("Not a hot wallet, can’t handle internet operations");
         }
         try {
